@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		66633A781759D9FA00E07079 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66633A771759D9FA00E07079 /* Foundation.framework */; };
 		66633A7B1759D9FA00E07079 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66633A7A1759D9FA00E07079 /* main.m */; };
-		66633A7F1759D9FA00E07079 /* AddTextToImage.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 66633A7E1759D9FA00E07079 /* AddTextToImage.1 */; };
 		66633A8F1759E20000E07079 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66633A8E1759E20000E07079 /* AppKit.framework */; };
 		66633A911759E55700E07079 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66633A901759E55700E07079 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
@@ -21,7 +20,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				66633A7F1759D9FA00E07079 /* AddTextToImage.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -32,7 +30,6 @@
 		66633A771759D9FA00E07079 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66633A7A1759D9FA00E07079 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66633A7D1759D9FA00E07079 /* AddTextToImage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AddTextToImage-Prefix.pch"; sourceTree = "<group>"; };
-		66633A7E1759D9FA00E07079 /* AddTextToImage.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = AddTextToImage.1; sourceTree = "<group>"; };
 		66633A8E1759E20000E07079 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		66633A901759E55700E07079 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -82,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				66633A7A1759D9FA00E07079 /* main.m */,
-				66633A7E1759D9FA00E07079 /* AddTextToImage.1 */,
 				66633A7C1759D9FA00E07079 /* Supporting Files */,
 			);
 			path = AddTextToImage;
@@ -251,6 +247,7 @@
 				66633A841759D9FA00E07079 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
