@@ -35,6 +35,9 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
+static CGFloat ATTIVersionNumber = 1.0;
+static NSInteger ATTIBuildNumber = 4;
+
 #pragma mark -
 
 NSString* stringAtIndexFromArgs(int argc, const char * argv[], int index)
@@ -44,7 +47,9 @@ NSString* stringAtIndexFromArgs(int argc, const char * argv[], int index)
     if(argc >= index) {
         const char *cStringAtIndex = argv[index];
         
-        str = [NSString stringWithCString:cStringAtIndex encoding:NSUTF8StringEncoding];
+        if(cStringAtIndex) {
+            str = [NSString stringWithCString:cStringAtIndex encoding:NSUTF8StringEncoding];
+        }
     }
     
     return str;
@@ -119,6 +124,7 @@ NSData* compositedImageRepsWithText(NSArray *imageReps,
         CGImageDestinationAddImageFromSource(imageDestination, imageSourceDataRef, imageIndex, nil);
         
         CFRelease(imageSourceDataRef);
+        CFRelease(cgImage);
         
         imageIndex++;
     }
@@ -204,6 +210,9 @@ int main(int argc, const char * argv[])
                 
                 returnValue = (writeImageDataToFileAsNewImage(compositedImageData, originalFilename, destinationFilename) == YES) ? 0 : 1;
             }
+        } else {
+            NSLog(@"%s v%.2f (%ld)", argv[0], ATTIVersionNumber, (long)ATTIBuildNumber);
+            NSLog(@"usage: %s <input_filepath> <text> <output_filepath>", argv[0]);
         }
     }
     
