@@ -11,6 +11,12 @@
 		66633A7B1759D9FA00E07079 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66633A7A1759D9FA00E07079 /* main.m */; };
 		66633A8F1759E20000E07079 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66633A8E1759E20000E07079 /* AppKit.framework */; };
 		66633A911759E55700E07079 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66633A901759E55700E07079 /* CoreGraphics.framework */; };
+		6678B226175ABDD900C39F62 /* ATTIAddTextToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */; };
+		6678B22F175ABE8500C39F62 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6678B22E175ABE8500C39F62 /* SenTestingKit.framework */; };
+		6678B231175ABE8500C39F62 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6678B230175ABE8500C39F62 /* Cocoa.framework */; };
+		6678B23B175ABE8500C39F62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6678B239175ABE8500C39F62 /* InfoPlist.strings */; };
+		6678B23E175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */; };
+		6678B244175AC24D00C39F62 /* ATTIAddTextToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +38,19 @@
 		66633A7D1759D9FA00E07079 /* AddTextToImage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AddTextToImage-Prefix.pch"; sourceTree = "<group>"; };
 		66633A8E1759E20000E07079 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		66633A901759E55700E07079 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTIAddTextToImage.m; sourceTree = "<group>"; };
+		6678B227175ABE0C00C39F62 /* ATTIAddTextToImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTIAddTextToImage.h; sourceTree = "<group>"; };
+		6678B22D175ABE8500C39F62 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6678B22E175ABE8500C39F62 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6678B230175ABE8500C39F62 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		6678B233175ABE8500C39F62 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6678B234175ABE8500C39F62 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6678B235175ABE8500C39F62 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6678B238175ABE8500C39F62 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		6678B23A175ABE8500C39F62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6678B23C175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTIAddTextToImageUnitTests.h; sourceTree = "<group>"; };
+		6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTIAddTextToImageUnitTests.m; sourceTree = "<group>"; };
+		6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +64,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6678B229175ABE8500C39F62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6678B22F175ABE8500C39F62 /* SenTestingKit.framework in Frameworks */,
+				6678B231175ABE8500C39F62 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -52,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				66633A791759D9FA00E07079 /* AddTextToImage */,
+				6678B236175ABE8500C39F62 /* UnitTests */,
 				66633A761759D9FA00E07079 /* Frameworks */,
 				66633A751759D9FA00E07079 /* Products */,
 			);
@@ -61,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				66633A741759D9FA00E07079 /* AddTextToImage */,
+				6678B22D175ABE8500C39F62 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +101,9 @@
 				66633A901759E55700E07079 /* CoreGraphics.framework */,
 				66633A8E1759E20000E07079 /* AppKit.framework */,
 				66633A771759D9FA00E07079 /* Foundation.framework */,
+				6678B22E175ABE8500C39F62 /* SenTestingKit.framework */,
+				6678B230175ABE8500C39F62 /* Cocoa.framework */,
+				6678B232175ABE8500C39F62 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -79,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				66633A7A1759D9FA00E07079 /* main.m */,
+				6678B227175ABE0C00C39F62 /* ATTIAddTextToImage.h */,
+				6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */,
 				66633A7C1759D9FA00E07079 /* Supporting Files */,
 			);
 			path = AddTextToImage;
@@ -88,6 +123,36 @@
 			isa = PBXGroup;
 			children = (
 				66633A7D1759D9FA00E07079 /* AddTextToImage-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6678B232175ABE8500C39F62 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6678B233175ABE8500C39F62 /* AppKit.framework */,
+				6678B234175ABE8500C39F62 /* CoreData.framework */,
+				6678B235175ABE8500C39F62 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6678B236175ABE8500C39F62 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				6678B23C175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.h */,
+				6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */,
+				6678B237175ABE8500C39F62 /* Supporting Files */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		6678B237175ABE8500C39F62 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6678B238175ABE8500C39F62 /* UnitTests-Info.plist */,
+				6678B239175ABE8500C39F62 /* InfoPlist.strings */,
+				6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -112,6 +177,24 @@
 			productReference = 66633A741759D9FA00E07079 /* AddTextToImage */;
 			productType = "com.apple.product-type.tool";
 		};
+		6678B22C175ABE8500C39F62 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6678B240175ABE8500C39F62 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				6678B228175ABE8500C39F62 /* Sources */,
+				6678B229175ABE8500C39F62 /* Frameworks */,
+				6678B22A175ABE8500C39F62 /* Resources */,
+				6678B22B175ABE8500C39F62 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 6678B22D175ABE8500C39F62 /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -135,9 +218,37 @@
 			projectRoot = "";
 			targets = (
 				66633A731759D9FA00E07079 /* AddTextToImage */,
+				6678B22C175ABE8500C39F62 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6678B22A175ABE8500C39F62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6678B23B175ABE8500C39F62 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6678B22B175ABE8500C39F62 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		66633A701759D9FA00E07079 /* Sources */ = {
@@ -145,10 +256,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				66633A7B1759D9FA00E07079 /* main.m in Sources */,
+				6678B226175ABDD900C39F62 /* ATTIAddTextToImage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6678B228175ABE8500C39F62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6678B23E175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m in Sources */,
+				6678B244175AC24D00C39F62 /* ATTIAddTextToImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6678B239175ABE8500C39F62 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6678B23A175ABE8500C39F62 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		66633A801759D9FA00E07079 /* Debug */ = {
@@ -228,6 +360,32 @@
 			};
 			name = Release;
 		};
+		6678B241175ABE8500C39F62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6678B242175ABE8500C39F62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -248,6 +406,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6678B240175ABE8500C39F62 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6678B241175ABE8500C39F62 /* Debug */,
+				6678B242175ABE8500C39F62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
