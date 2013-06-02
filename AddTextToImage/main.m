@@ -81,19 +81,11 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         NSString *originalFilename = imageSourcePathFromArgs(argc, argv);
         NSString *compositeText = imageTextFromArgs(argc, argv);
+        NSString *destinationFilename = imageDestPathFromArgs(argc, argv);
         
-        if(originalFilename && compositeText) {
-            NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:originalFilename];
-            
-            if(imageReps) {
-                CFStringRef imageContentType = imageContentTypeForFile(originalFilename);
-                NSData *compositedImageData = compositedImageRepsWithText(imageReps, imageContentType, compositeText);
-                
-                NSString *destinationFilename = imageDestPathFromArgs(argc, argv);
-                
-                returnValue = (writeImageDataToFileAsNewImage(compositedImageData, originalFilename, destinationFilename) == YES) ? 0 : 1;
-            }
-        } else {
+        returnValue = ((addTextToImage(originalFilename, compositeText, destinationFilename) == YES) ? 0 : 1);
+        
+        if(returnValue == 1) {
             NSLog(@"%s v%.2f (%ld)", argv[0], ATTIVersionNumber, (long)ATTIBuildNumber);
             NSLog(@"usage: %s <input_filepath> <text> <output_filepath>", argv[0]);
         }

@@ -23,14 +23,6 @@
 #ifndef AddTextToImage_ATTIAddTextToImage_h
 #define AddTextToImage_ATTIAddTextToImage_h
 
-NSData* compositedImageRepsWithText(NSArray *imageReps,
-                                    CFStringRef imageContentType,
-                                    NSString *text);
-
-NSBitmapImageFileType fileTypeForFile(NSString *file);
-
-CFStringRef imageContentTypeForFile(NSString *file);
-
-BOOL writeImageDataToFileAsNewImage(NSData* imageData, NSString* originalFilename, NSString* destinationFilename);
+BOOL addTextToImage(NSString *originalFilename, NSString *compositeText, NSString *destinationFilename);
 
 #endif

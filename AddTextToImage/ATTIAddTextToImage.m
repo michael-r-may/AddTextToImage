@@ -98,6 +98,14 @@ NSData* compositedImageRepsWithText(NSArray *imageReps,
     return imageData;
 }
 
+NSData* convertImageRepDataToImageDataForType(NSData *imageRepData, NSBitmapImageFileType imageFileType) 
+{    
+    NSBitmapImageRep *bitmapRep = [NSBitmapImageRep imageRepWithData:imageRepData];
+    NSData *imageDataForType = [bitmapRep representationUsingType:imageFileType properties:nil];
+
+    return imageDataForType;
+}
+
 #pragma mark -
 
 static NSString *PNGFileExtension = @"png";
@@ -149,13 +157,33 @@ CFStringRef imageContentTypeForFile(NSString *file)
 
 #pragma mark - 
 
-BOOL writeImageDataToFileAsNewImage(NSData* imageData, NSString* originalFilename, NSString* destinationFilename)
+BOOL writeImageDataToFileAsNewImage(NSData* imageRepData, NSString* originalFilename, NSString* destinationFilename)
 {
-    NSBitmapImageFileType fileTypeForFileName = fileTypeForFile([originalFilename lastPathComponent]);
+    NSBitmapImageFileType imageFileType = fileTypeForFile([originalFilename lastPathComponent]);
     
-    NSBitmapImageRep *bitmapRep = [NSBitmapImageRep imageRepWithData:imageData];
-    
-    NSData *imageDataWithType = [bitmapRep representationUsingType:fileTypeForFileName properties:nil];
+    NSData *imageDataWithType = convertImageRepDataToImageDataForType(imageRepData, imageFileType);
     
     return [imageDataWithType writeToFile:destinationFilename atomically:YES];
 }
+
+#pragma mark - 
+
+BOOL addTextToImage(NSString *originalFilename, NSString *compositeText, NSString *destinationFilename)
+{
+    BOOL success = NO;
+    
+    if(originalFilename && compositeText && destinationFilename) {
+        NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:originalFilename];
+        
+        if(imageReps) {
+            CFStringRef imageContentType = imageContentTypeForFile(originalFilename);
+            NSData *compositedImageData = compositedImageRepsWithText(imageReps, imageContentType, compositeText);
+            
+            success = writeImageDataToFileAsNewImage(compositedImageData, originalFilename, destinationFilename);
+        }
+    }
+    
+    return success;
+}
+
+

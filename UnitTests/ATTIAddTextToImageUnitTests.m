@@ -23,8 +23,24 @@
 #import <Foundation/Foundation.h>
 
 #import "ATTIAddTextToImageUnitTests.h"
-
 #import "ATTIAddTextToImage.h"
+
+
+// hidden in ATTIAddTextToImage but needed so I can unit test it
+NSData* compositedImageRepsWithText(NSArray *imageReps,
+                                    CFStringRef imageContentType,
+                                    NSString *text);
+
+NSBitmapImageFileType fileTypeForFile(NSString *file);
+
+CFStringRef imageContentTypeForFile(NSString *file);
+
+NSData* convertImageRepDataToImageDataForType(NSData *imageRepData, NSBitmapImageFileType imageFileType);
+
+BOOL writeImageDataToFileAsNewImage(NSData* imageData, NSString* originalFilename, NSString* destinationFilename);
+// hidden in ATTIAddTextToImage but needed so I can unit test it
+
+
 
 @implementation ATTIAddTextToImageUnitTests
 
@@ -248,16 +264,21 @@ NSString *PNGFilePath = @"/my/dir/test.png";
     STAssertNotNil(imageData, @"");    
 }
 
-// TODO: check that the image data we get actually appears to be modified from the original
-//-(void)testCompositedImageRepsWithTextReturnsModifiedImageData {
-//    // given
-//    NSData *originalImageData = [originalImage dat]
-//    
-//    // when
-//    NSData *imageData = [self performTestCompositedImageRepsWithTextReturnsValidImageDataWithFilenamePrefix:@"sms"];
-//    
-//    // then
-//    STAssertNotNil(imageData, @"");
-//}
+
+-(void)testCompositedImageRepsWithTextReturnsModifiedImageData {
+    // given
+    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:@"sms" ofType:@"png"];
+    NSData *originalImageData = [NSData dataWithContentsOfFile:imageFileName];
+    CFStringRef imageContentType = kUTTypePNG;
+    NSString *text = @"v1.0 (10)";
+    
+    // when
+    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
+    NSData *imageRepData = compositedImageRepsWithText(imageReps, imageContentType, text);
+    NSData *imageDataPNG = convertImageRepDataToImageDataForType(imageRepData, NSPNGFileType);
+    
+    // then
+    STAssertFalse([originalImageData isEqualToData:imageDataPNG], @"");
+}
 
 @end
