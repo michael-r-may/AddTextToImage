@@ -26,66 +26,74 @@
 #pragma mark -
 
 NSData* compositedImageRepsWithText(NSArray *imageReps,
-                                    CFStringRef type,
+                                    CFStringRef imageContentType,
                                     NSString *text)
 {
-    NSInteger imageSizeWidth = 0;
-    NSInteger imageSizeHeight = 0;
+    NSMutableData *imageData = nil;
     
-    [NSGraphicsContext saveGraphicsState];
+    BOOL validArguments = (imageReps && imageContentType && text);
+    validArguments &= ([(__bridge NSString *)imageContentType length] > 0);
     
-    NSMutableData *imageData = [[NSMutableData alloc] init];
-    CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData,
-                                                                              type,
-                                                                              [imageReps count],
-                                                                              nil);
-    
-    NSInteger imageIndex = 0;
-    for (NSImageRep * imageRep in imageReps) {
-        imageSizeWidth = [imageRep pixelsWide];
-        imageSizeHeight = [imageRep pixelsHigh];
+    if(validArguments) {
+        NSInteger imageSizeWidth = 0;
+        NSInteger imageSizeHeight = 0;
         
-        CGContextRef bitmapContext = CGBitmapContextCreate(NULL,
-                                                           imageSizeWidth,
-                                                           imageSizeHeight,
-                                                           8,
-                                                           0,
-                                                           [[NSColorSpace genericRGBColorSpace] CGColorSpace],
-                                                           kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedFirst);
+        [NSGraphicsContext saveGraphicsState];
         
-        [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:bitmapContext flipped:NO]];
+        imageData = [[NSMutableData alloc] init];
         
-        [imageRep drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
-                    fromRect:NSZeroRect
-                   operation:NSCompositeCopy
-                    fraction:1.0
-              respectFlipped:YES
-                       hints:nil];
+        CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData,
+                                                                                  imageContentType,
+                                                                                  [imageReps count],
+                                                                                  nil);
         
-        [text drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
-          withAttributes:nil];
+        NSInteger imageIndex = 0;
+        for (NSImageRep * imageRep in imageReps) {
+            imageSizeWidth = [imageRep pixelsWide];
+            imageSizeHeight = [imageRep pixelsHigh];
+            
+            CGContextRef bitmapContext = CGBitmapContextCreate(NULL,
+                                                               imageSizeWidth,
+                                                               imageSizeHeight,
+                                                               8,
+                                                               0,
+                                                               [[NSColorSpace genericRGBColorSpace] CGColorSpace],
+                                                               kCGBitmapByteOrder32Host | kCGImageAlphaPremultipliedFirst);
+            
+            [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:bitmapContext flipped:NO]];
+            
+            [imageRep drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
+                        fromRect:NSZeroRect
+                       operation:NSCompositeCopy
+                        fraction:1.0
+                  respectFlipped:YES
+                           hints:nil];
+            
+            [text drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
+              withAttributes:nil];
+            
+            CGImageRef cgImage = CGBitmapContextCreateImage(bitmapContext);
+            
+            CGContextRelease(bitmapContext);
+            
+            NSImage *modifiedImage = [[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(imageSizeWidth, imageSizeHeight)];
+            
+            NSData *modifiedImageData = [modifiedImage TIFFRepresentation];
+            CGImageSourceRef imageSourceDataRef = CGImageSourceCreateWithData((__bridge CFMutableDataRef)modifiedImageData, nil);
+            
+            CGImageDestinationAddImageFromSource(imageDestination, imageSourceDataRef, imageIndex, nil);
+            
+            CFRelease(imageSourceDataRef);
+            CFRelease(cgImage);
+            
+            imageIndex++;
+        }
         
-        CGImageRef cgImage = CGBitmapContextCreateImage(bitmapContext);
+        CGImageDestinationFinalize(imageDestination);
+        CFRelease(imageDestination);
         
-        CGContextRelease(bitmapContext);
-        
-        NSImage *modifiedImage = [[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(imageSizeWidth, imageSizeHeight)];
-        
-        NSData *modifiedImageData = [modifiedImage TIFFRepresentation];
-        CGImageSourceRef imageSourceDataRef = CGImageSourceCreateWithData((__bridge CFMutableDataRef)modifiedImageData, nil);
-        
-        CGImageDestinationAddImageFromSource(imageDestination, imageSourceDataRef, imageIndex, nil);
-        
-        CFRelease(imageSourceDataRef);
-        CFRelease(cgImage);
-        
-        imageIndex++;
+        [NSGraphicsContext restoreGraphicsState];
     }
-    
-    CGImageDestinationFinalize(imageDestination);
-    CFRelease(imageDestination);
-    
-    [NSGraphicsContext restoreGraphicsState];
     
     return imageData;
 }

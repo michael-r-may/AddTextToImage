@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
+
 #import "ATTIAddTextToImageUnitTests.h"
 
 #import "ATTIAddTextToImage.h"
@@ -32,6 +34,16 @@ NSString *JPEGFilePath = @"/my/dir/test.jpeg";
 NSString *PNGFilePath = @"/my/dir/test.png";
 
 #pragma mark - fileTypeForFile
+
+-(void)testNilFileType {
+    // given
+    
+    // when
+    NSBitmapImageFileType fileType = fileTypeForFile(nil);
+    
+    // then
+    STAssertTrue(fileType == NSTIFFFileType, @"");
+}
 
 -(void)testGifFileType {
     // given
@@ -85,6 +97,17 @@ NSString *PNGFilePath = @"/my/dir/test.png";
 
 #pragma mark - imageContentTypeForFile(NSString *file)
 
+-(void)testNilContentType {
+    // given
+    
+    // when
+    CFStringRef imageContentType = imageContentTypeForFile(nil);
+    
+    // then
+    STAssertTrue(imageContentType == kUTTypeImage, @"");
+}
+
+
 -(void)testGIFContentType {
     // given
     
@@ -134,5 +157,107 @@ NSString *PNGFilePath = @"/my/dir/test.png";
     // then
     STAssertTrue(imageContentType == kUTTypePNG, @"");
 }
+
+#pragma mark - imageRepsWithContentsOfFile
+
+-(void)testCompositedImageRepsWithTextReturnsImageArrayForValidBundlePNG {
+    // given    
+    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:@"sms" ofType:@"png"];
+    
+    // when
+    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
+    
+    // then
+    STAssertNotNil(imageReps, @"");
+}
+
+-(void)testCompositedImageRepsWithTextReturnsImageArrayForValidBundlePNG2x {
+    // given
+    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:@"sms@2x" ofType:@"png"];
+    
+    // when
+    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
+    
+    // then
+    STAssertNotNil(imageReps, @"");
+}
+
+#pragma mark - compositedImageRepsWithText
+
+//NSData* compositedImageRepsWithText(NSArray *imageReps,
+//                                    CFStringRef imageContentType,
+//                                    NSString *text);
+
+-(void)testCompositedImageRepsWithTextReturnsNilForNilArguments
+{
+    // given
+    NSArray *imageReps = nil;
+    CFStringRef imageContentType = nil;
+    NSString *text = nil;
+    
+    // when
+    NSData *imageData = compositedImageRepsWithText(imageReps, imageContentType, text);
+    
+    // then
+    STAssertNil(imageData, @"");
+}
+
+-(void)testCompositedImageRepsWithTextReturnsNilForEmptyArguments
+{
+    // given
+    NSArray *imageReps = @[];
+    CFStringRef imageContentType = (__bridge CFStringRef)@"";
+    NSString *text = @"";
+    
+    // when
+    NSData *imageData = compositedImageRepsWithText(imageReps, imageContentType, text);
+    
+    // then
+    STAssertNil(imageData, @"");
+}
+
+-(NSData *)performTestCompositedImageRepsWithTextReturnsValidImageDataWithFilenamePrefix:(NSString*)filePrefix
+{
+    // given
+    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:filePrefix ofType:@"png"];
+    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
+    
+    CFStringRef imageContentType = kUTTypePNG;
+    
+    NSString *text = @"v1.0 (10)";
+    
+    // when
+    NSData *imageData = compositedImageRepsWithText(imageReps, imageContentType, text);
+        
+    return imageData;
+}
+
+-(void)testCompositedImageRepsWithTextReturnsValidImageDataWithValidPNGArguments {
+    // given / when
+    NSData *imageData = [self performTestCompositedImageRepsWithTextReturnsValidImageDataWithFilenamePrefix:@"sms"];
+    
+    // then
+    STAssertNotNil(imageData, @"");
+}
+
+-(void)testCompositedImageRepsWithTextReturnsValidImageDataWithValidPNG2xArguments {
+    // given / when
+    NSData *imageData = [self performTestCompositedImageRepsWithTextReturnsValidImageDataWithFilenamePrefix:@"sms@2x"];
+    
+    // then
+    STAssertNotNil(imageData, @"");    
+}
+
+// TODO: check that the image data we get actually appears to be modified from the original
+//-(void)testCompositedImageRepsWithTextReturnsModifiedImageData {
+//    // given
+//    NSData *originalImageData = [originalImage dat]
+//    
+//    // when
+//    NSData *imageData = [self performTestCompositedImageRepsWithTextReturnsValidImageDataWithFilenamePrefix:@"sms"];
+//    
+//    // then
+//    STAssertNotNil(imageData, @"");
+//}
 
 @end

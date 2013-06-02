@@ -24,7 +24,7 @@
 #define AddTextToImage_ATTIAddTextToImage_h
 
 NSData* compositedImageRepsWithText(NSArray *imageReps,
-                                    CFStringRef type,
+                                    CFStringRef imageContentType,
                                     NSString *text);
 
 NSBitmapImageFileType fileTypeForFile(NSString *file);

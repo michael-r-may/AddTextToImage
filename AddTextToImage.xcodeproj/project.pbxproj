@@ -17,6 +17,8 @@
 		6678B23B175ABE8500C39F62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6678B239175ABE8500C39F62 /* InfoPlist.strings */; };
 		6678B23E175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */; };
 		6678B244175AC24D00C39F62 /* ATTIAddTextToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */; };
+		6678B247175B2F7300C39F62 /* sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6678B245175B2F7300C39F62 /* sms@2x.png */; };
+		6678B248175B2F7300C39F62 /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 6678B246175B2F7300C39F62 /* sms.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		6678B23C175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTIAddTextToImageUnitTests.h; sourceTree = "<group>"; };
 		6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTIAddTextToImageUnitTests.m; sourceTree = "<group>"; };
 		6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		6678B245175B2F7300C39F62 /* sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sms@2x.png"; sourceTree = "<group>"; };
+		6678B246175B2F7300C39F62 /* sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 		6678B237175ABE8500C39F62 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6678B245175B2F7300C39F62 /* sms@2x.png */,
+				6678B246175B2F7300C39F62 /* sms.png */,
 				6678B238175ABE8500C39F62 /* UnitTests-Info.plist */,
 				6678B239175ABE8500C39F62 /* InfoPlist.strings */,
 				6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */,
@@ -229,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6678B23B175ABE8500C39F62 /* InfoPlist.strings in Resources */,
+				6678B247175B2F7300C39F62 /* sms@2x.png in Resources */,
+				6678B248175B2F7300C39F62 /* sms.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +371,7 @@
 		6678B241175ABE8500C39F62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
@@ -376,7 +384,7 @@
 		6678B242175ABE8500C39F62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
