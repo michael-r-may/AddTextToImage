@@ -97,26 +97,6 @@ static NSString *GIFFileExtension = @"gif";
 static NSString *JPGFileExtension = @"jpg";
 static NSString *JPEGFileExtension = @"jpeg";
 
-CFStringRef imageContentTypeForFile(NSString *file)
-{
-    NSString *extension = [[file pathExtension] lowercaseString];
-    
-    if ([extension isEqualToString:PNGFileExtension])
-    {
-        return kUTTypePNG;
-    }
-    else if ([extension isEqualToString:GIFFileExtension])
-    {
-        return kUTTypeGIF;
-    }
-    else if ([extension isEqualToString:JPGFileExtension] || [extension isEqualToString:JPEGFileExtension])
-    {
-        return kUTTypeJPEG;
-    }
-    
-    return kUTTypeImage;
-}
-
 NSBitmapImageFileType fileTypeForFile(NSString *file)
 {
     NSString *extension = [[file pathExtension] lowercaseString];
@@ -135,6 +115,28 @@ NSBitmapImageFileType fileTypeForFile(NSString *file)
     }
     
     return NSTIFFFileType;
+}
+
+CFStringRef imageContentTypeForFile(NSString *file)
+{
+    NSBitmapImageFileType fileType = fileTypeForFile(file);
+    
+    switch(fileType) {
+        case NSPNGFileType:
+            return kUTTypePNG;
+            break;
+            
+        case NSGIFFileType:
+            return kUTTypeGIF;
+            break;
+            
+        case NSJPEGFileType:
+            return kUTTypeJPEG;
+            break;
+            
+        default:
+            return kUTTypeImage;
+    }
 }
 
 #pragma mark - 

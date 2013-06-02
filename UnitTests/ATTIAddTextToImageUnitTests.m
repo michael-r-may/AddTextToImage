@@ -73,6 +73,16 @@ NSString *PNGFilePath = @"/my/dir/test.png";
     STAssertTrue(fileType == NSPNGFileType, @"");
 }
 
+-(void)testPNGUppercaseFileType {
+    // given
+    
+    // when
+    NSBitmapImageFileType fileType = fileTypeForFile([PNGFilePath uppercaseString]);
+    
+    // then
+    STAssertTrue(fileType == NSPNGFileType, @"");
+}
+
 #pragma mark - imageContentTypeForFile(NSString *file)
 
 -(void)testGIFContentType {
@@ -110,6 +120,16 @@ NSString *PNGFilePath = @"/my/dir/test.png";
     
     // when
     CFStringRef imageContentType = imageContentTypeForFile(PNGFilePath);
+    
+    // then
+    STAssertTrue(imageContentType == kUTTypePNG, @"");
+}
+
+-(void)testPNGUppercaseContentType {
+    // given
+    
+    // when
+    CFStringRef imageContentType = imageContentTypeForFile([PNGFilePath uppercaseString]);
     
     // then
     STAssertTrue(imageContentType == kUTTypePNG, @"");
