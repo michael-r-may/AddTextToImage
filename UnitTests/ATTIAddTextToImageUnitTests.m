@@ -264,21 +264,31 @@ NSString *PNGFilePath = @"/my/dir/test.png";
     STAssertNotNil(imageData, @"");    
 }
 
-
--(void)testCompositedImageRepsWithTextReturnsModifiedImageData {
+-(void)performTestCompositedImageRepsWithTextReturnsModifiedImageDataWithFilenamePrefix:(NSString*)filenamePrefix {
     // given
-    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:@"sms" ofType:@"png"];
+    NSString *imageFileName = [[NSBundle bundleForClass:[self class]] pathForResource:filenamePrefix ofType:@"png"];
     NSData *originalImageData = [NSData dataWithContentsOfFile:imageFileName];
     CFStringRef imageContentType = kUTTypePNG;
     NSString *text = @"v1.0 (10)";
     
     // when
-    NSArray * imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
+    NSArray *imageReps = [NSBitmapImageRep imageRepsWithContentsOfFile:imageFileName];
     NSData *imageRepData = compositedImageRepsWithText(imageReps, imageContentType, text);
     NSData *imageDataPNG = convertImageRepDataToImageDataForType(imageRepData, NSPNGFileType);
     
     // then
+    STAssertNotNil(imageReps, @"");
+    STAssertNotNil(imageDataPNG, @"");
+    STAssertNotNil(imageRepData, @"");
     STAssertFalse([originalImageData isEqualToData:imageDataPNG], @"");
+}
+
+-(void)testCompositedImageRepsWithTextReturnsModifiedImageData {
+    [self performTestCompositedImageRepsWithTextReturnsModifiedImageDataWithFilenamePrefix:@"sms"];
+}
+
+-(void)testCompositedImageRepsWithTextReturnsModifiedImageData2x {
+    [self performTestCompositedImageRepsWithTextReturnsModifiedImageDataWithFilenamePrefix:@"sms@2x"];
 }
 
 @end
