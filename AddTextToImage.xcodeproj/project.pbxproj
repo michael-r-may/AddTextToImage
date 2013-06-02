@@ -19,6 +19,11 @@
 		6678B244175AC24D00C39F62 /* ATTIAddTextToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */; };
 		6678B247175B2F7300C39F62 /* sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6678B245175B2F7300C39F62 /* sms@2x.png */; };
 		6678B248175B2F7300C39F62 /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 6678B246175B2F7300C39F62 /* sms.png */; };
+		6678B24A175BD09300C39F62 /* ATTIInfoPlistToVersionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B249175BD09300C39F62 /* ATTIInfoPlistToVersionString.m */; };
+		6678B24B175BD09300C39F62 /* ATTIInfoPlistToVersionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B249175BD09300C39F62 /* ATTIInfoPlistToVersionString.m */; };
+		6678B24F175BD1B300C39F62 /* ATTIInfoPlistToVersionStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B24E175BD1B300C39F62 /* ATTIInfoPlistToVersionStringTests.m */; };
+		6678B251175BD29100C39F62 /* ATTIInfoPlistToVersionStringTests-InfoPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6678B250175BD29100C39F62 /* ATTIInfoPlistToVersionStringTests-InfoPlist.plist */; };
+		6678B253175BD32A00C39F62 /* ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6678B252175BD32A00C39F62 /* ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +60,11 @@
 		6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		6678B245175B2F7300C39F62 /* sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sms@2x.png"; sourceTree = "<group>"; };
 		6678B246175B2F7300C39F62 /* sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms.png; sourceTree = "<group>"; };
+		6678B249175BD09300C39F62 /* ATTIInfoPlistToVersionString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTIInfoPlistToVersionString.m; sourceTree = "<group>"; };
+		6678B24C175BD0EB00C39F62 /* ATTIInfoPlistToVersionString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTIInfoPlistToVersionString.h; sourceTree = "<group>"; };
+		6678B24E175BD1B300C39F62 /* ATTIInfoPlistToVersionStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTIInfoPlistToVersionStringTests.m; sourceTree = "<group>"; };
+		6678B250175BD29100C39F62 /* ATTIInfoPlistToVersionStringTests-InfoPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ATTIInfoPlistToVersionStringTests-InfoPlist.plist"; sourceTree = "<group>"; };
+		6678B252175BD32A00C39F62 /* ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,8 @@
 				66633A7A1759D9FA00E07079 /* main.m */,
 				6678B227175ABE0C00C39F62 /* ATTIAddTextToImage.h */,
 				6678B225175ABDD900C39F62 /* ATTIAddTextToImage.m */,
+				6678B24C175BD0EB00C39F62 /* ATTIInfoPlistToVersionString.h */,
+				6678B249175BD09300C39F62 /* ATTIInfoPlistToVersionString.m */,
 				66633A7C1759D9FA00E07079 /* Supporting Files */,
 			);
 			path = AddTextToImage;
@@ -146,6 +158,7 @@
 			children = (
 				6678B23C175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.h */,
 				6678B23D175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m */,
+				6678B24E175BD1B300C39F62 /* ATTIInfoPlistToVersionStringTests.m */,
 				6678B237175ABE8500C39F62 /* Supporting Files */,
 			);
 			path = UnitTests;
@@ -159,6 +172,8 @@
 				6678B238175ABE8500C39F62 /* UnitTests-Info.plist */,
 				6678B239175ABE8500C39F62 /* InfoPlist.strings */,
 				6678B23F175ABE8500C39F62 /* UnitTests-Prefix.pch */,
+				6678B252175BD32A00C39F62 /* ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist */,
+				6678B250175BD29100C39F62 /* ATTIInfoPlistToVersionStringTests-InfoPlist.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -237,6 +252,8 @@
 				6678B23B175ABE8500C39F62 /* InfoPlist.strings in Resources */,
 				6678B247175B2F7300C39F62 /* sms@2x.png in Resources */,
 				6678B248175B2F7300C39F62 /* sms.png in Resources */,
+				6678B251175BD29100C39F62 /* ATTIInfoPlistToVersionStringTests-InfoPlist.plist in Resources */,
+				6678B253175BD32A00C39F62 /* ATTIInfoPlistToVersionStringTests-Empty-InfoPlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +282,7 @@
 			files = (
 				66633A7B1759D9FA00E07079 /* main.m in Sources */,
 				6678B226175ABDD900C39F62 /* ATTIAddTextToImage.m in Sources */,
+				6678B24A175BD09300C39F62 /* ATTIInfoPlistToVersionString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +292,8 @@
 			files = (
 				6678B23E175ABE8500C39F62 /* ATTIAddTextToImageUnitTests.m in Sources */,
 				6678B244175AC24D00C39F62 /* ATTIAddTextToImage.m in Sources */,
+				6678B24B175BD09300C39F62 /* ATTIInfoPlistToVersionString.m in Sources */,
+				6678B24F175BD1B300C39F62 /* ATTIInfoPlistToVersionStringTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
