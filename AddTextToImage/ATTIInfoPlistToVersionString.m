@@ -25,6 +25,16 @@
 const NSString *CFBundleShortVersionStringKey = @"CFBundleShortVersionString";
 const NSString *CFBundleVersionKey = @"CFBundleVersion";
 
+NSString *versionStringFromAppVersionBuildNumber(NSString *appVersion, NSString* buildNumber);
+NSString* versionStringFromDictionary(NSDictionary *infoPlistDictionary);
+
+BOOL stringIsAPlistPath(NSString* plistPath)
+{
+    NSString *lastPathComponent = [plistPath lastPathComponent];
+    
+    return [lastPathComponent hasSuffix:@".plist"];
+}
+
 NSString *versionStringFromAppVersionBuildNumber(NSString *appVersion, NSString* buildNumber)
 {
     NSString *versionString = nil;

@@ -23,6 +23,8 @@
 #ifndef AddTextToImage_ATTIInfoPlistToVersionString_h
 #define AddTextToImage_ATTIInfoPlistToVersionString_h
 
+BOOL stringIsAPlistPath(NSString* plistPath);
+
 NSString* versionStringFromInfoPlistFilename(NSString* infoPlistFilename);
 
 #endif

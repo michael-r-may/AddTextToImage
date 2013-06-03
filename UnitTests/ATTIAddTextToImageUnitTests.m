@@ -22,9 +22,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ATTIAddTextToImageUnitTests.h"
 #import "ATTIAddTextToImage.h"
-
 
 // hidden in ATTIAddTextToImage but needed so I can unit test it
 NSData* compositedImageRepsWithText(NSArray *imageReps,
@@ -41,6 +39,10 @@ BOOL writeImageDataToFileAsNewImage(NSData* imageData, NSString* originalFilenam
 // hidden in ATTIAddTextToImage but needed so I can unit test it
 
 
+#import <SenTestingKit/SenTestingKit.h>
+
+@interface ATTIAddTextToImageUnitTests : SenTestCase
+@end
 
 @implementation ATTIAddTextToImageUnitTests
 

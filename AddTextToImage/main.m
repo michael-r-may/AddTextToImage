@@ -36,11 +36,17 @@
 #import <Foundation/Foundation.h>
 
 #import "ATTIAddTextToImage.h"
+#import "ATTIInfoPlistToVersionString.h"
 
 static CGFloat ATTIVersionNumber = 1.0;
 static NSInteger ATTIBuildNumber = 5;
 
 #pragma mark -
+
+NSString* stringAtIndexFromArgs(int argc, const char * argv[], int index);
+NSString* imageSourcePathFromArgs(int argc, const char * argv[]);
+NSString* imageTextFromArgs(int argc, const char * argv[]);
+NSString* imageDestPathFromArgs(int argc, const char * argv[]);
 
 NSString* stringAtIndexFromArgs(int argc, const char * argv[], int index)
 {
@@ -76,16 +82,22 @@ NSString* imageDestPathFromArgs(int argc, const char * argv[])
 
 int main(int argc, const char * argv[])
 {
-    int returnValue = 1;
+    int returnValue = EXIT_FAILURE;
     
     @autoreleasepool {
         NSString *originalFilename = imageSourcePathFromArgs(argc, argv);
-        NSString *compositeText = imageTextFromArgs(argc, argv);
         NSString *destinationFilename = imageDestPathFromArgs(argc, argv);
         
-        returnValue = ((addTextToImage(originalFilename, compositeText, destinationFilename) == YES) ? 0 : 1);
+        NSString *compositeText = imageTextFromArgs(argc, argv);
+        if(stringIsAPlistPath(compositeText)) {
+            compositeText = versionStringFromInfoPlistFilename(compositeText);
+            
+            NSLog(@"Composed version string from plist: %@", compositeText);
+        }
         
-        if(returnValue == 1) {
+        returnValue = ((addTextToImage(originalFilename, compositeText, destinationFilename) == YES) ? EXIT_SUCCESS : EXIT_FAILURE);
+        
+        if(returnValue == EXIT_FAILURE) {
             NSLog(@"%s v%.2f (%ld)", argv[0], ATTIVersionNumber, (long)ATTIBuildNumber);
             NSLog(@"usage: %s <input_filepath> <text> <output_filepath>", argv[0]);
         }

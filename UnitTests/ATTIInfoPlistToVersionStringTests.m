@@ -35,6 +35,76 @@ NSString* versionStringFromDictionary(NSDictionary *infoPlistDictionary);
 
 @implementation ATTIInfoPlistToVersionStringTests
 
+#pragma mark - stringIsAPlistPath
+
+-(void)testThatCallingStringIsAPlistPathWithNilReturnsFalse {
+    // given
+    NSString *plistPathString = nil;
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertFalse(isAPlistPath, @"");
+}
+
+-(void)testThatCallingStringIsAPlistPathWithEmptyStringReturnsFalse {
+    // given
+    NSString *plistPathString = @"";
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertFalse(isAPlistPath, @"");
+}
+
+-(void)testThatCallingStringIsAPlistPathWithAnyOldStringReturnsFalse {
+    // given
+    NSString *plistPathString = @"AnyOldStringILike";
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertFalse(isAPlistPath, @"");
+}
+
+-(void)testThatCallingStringIsAPlistPathWithAFilePathStringReturnsFalse {
+    // given
+    NSString *plistPathString = @"/Users/someone/dir/hello/world.text";
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertFalse(isAPlistPath, @"");
+}
+
+-(void)testThatCallingStringIsAPlistPathWithAFilePathStringContainingPlistReturnsFalse {
+    // given
+    NSString *plistPathString = @"/Users/someone/dir/.plist/world";
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertFalse(isAPlistPath, @"");
+}
+
+-(void)testThatCallingStringIsAPlistPathWithAFilePathStringEndingWithPlistReturnsFalse {
+    // given
+    NSString *plistPathString = @"/Users/someone/dir/hello/world.plist";
+    
+    // when
+    BOOL isAPlistPath = stringIsAPlistPath(plistPathString);
+    
+    // then
+    STAssertTrue(isAPlistPath, @"");
+}
+
+#pragma mark - versionStringFromInfoPlistFilename
+
 -(void)testThatCallingVersionStringFromInfoPlistFilenameWithNilFilenameReturnsANilVersionString {
     // given
     NSString *plistFilename = nil;

@@ -23,6 +23,22 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
+#pragma mark - prototypes for functions
+
+NSData* compositedImageRepsWithText(NSArray *imageReps,
+                                    CFStringRef imageContentType,
+                                    NSString *text);
+
+NSData* convertImageRepDataToImageDataForType(NSData *imageRepData, NSBitmapImageFileType imageFileType) ;
+
+NSBitmapImageFileType fileTypeForFile(NSString *file);
+
+CFStringRef imageContentTypeForFile(NSString *file);
+
+BOOL writeImageDataToFileAsNewImage(NSData* imageRepData, NSString* originalFilename, NSString* destinationFilename);
+
+BOOL addTextToImage(NSString *originalFilename, NSString *compositeText, NSString *destinationFilename);
+
 #pragma mark -
 
 NSData* compositedImageRepsWithText(NSArray *imageReps,
@@ -47,14 +63,14 @@ NSData* compositedImageRepsWithText(NSArray *imageReps,
                                                                                   [imageReps count],
                                                                                   nil);
         
-        NSInteger imageIndex = 0;
+        size_t imageIndex = 0;
         for (NSImageRep * imageRep in imageReps) {
             imageSizeWidth = [imageRep pixelsWide];
             imageSizeHeight = [imageRep pixelsHigh];
             
             CGContextRef bitmapContext = CGBitmapContextCreate(NULL,
-                                                               imageSizeWidth,
-                                                               imageSizeHeight,
+                                                               (size_t)imageSizeWidth,
+                                                               (size_t)imageSizeHeight,
                                                                8,
                                                                0,
                                                                [[NSColorSpace genericRGBColorSpace] CGColorSpace],
