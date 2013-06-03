@@ -89,7 +89,8 @@ NSData* compositedImageRepsWithText(NSArray *imageReps,
             [paragraphStyleForText setAlignment:NSCenterTextAlignment];
             NSDictionary *attributesForText = @{NSParagraphStyleAttributeName: paragraphStyleForText,
                                                 NSBackgroundColorAttributeName : [[NSColor darkGrayColor] colorWithAlphaComponent:0.7],
-                                                NSForegroundColorAttributeName : [NSColor whiteColor]};
+                                                NSForegroundColorAttributeName : [NSColor whiteColor],
+                                                NSFontSizeAttribute : @16.0f};
             
             [text drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
               withAttributes:attributesForText];
