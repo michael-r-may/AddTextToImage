@@ -85,8 +85,14 @@ NSData* compositedImageRepsWithText(NSArray *imageReps,
                   respectFlipped:YES
                            hints:nil];
             
+            NSMutableParagraphStyle *paragraphStyleForText = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+            [paragraphStyleForText setAlignment:NSCenterTextAlignment];
+            NSDictionary *attributesForText = @{NSParagraphStyleAttributeName: paragraphStyleForText,
+                                                NSBackgroundColorAttributeName : [[NSColor darkGrayColor] colorWithAlphaComponent:0.7],
+                                                NSForegroundColorAttributeName : [NSColor whiteColor]};
+            
             [text drawInRect:NSMakeRect(0, 0, imageSizeWidth, imageSizeHeight)
-              withAttributes:nil];
+              withAttributes:attributesForText];
             
             CGImageRef cgImage = CGBitmapContextCreateImage(bitmapContext);
             
