@@ -38,8 +38,8 @@
 #import "ATTIAddTextToImage.h"
 #import "ATTIInfoPlistToVersionString.h"
 
-static CGFloat ATTIVersionNumber = 1.0;
-static NSInteger ATTIBuildNumber = 5;
+static CGFloat ATTIVersionNumber = 1.1;
+static NSInteger ATTIBuildNumber = 6;
 
 #pragma mark -
 
@@ -95,11 +95,14 @@ int main(int argc, const char * argv[])
             NSLog(@"Composed version string from plist: %@", compositeText);
         }
         
+        NSLog(@"Processing image: %@", originalFilename);
         returnValue = ((addTextToImage(originalFilename, compositeText, destinationFilename) == YES) ? EXIT_SUCCESS : EXIT_FAILURE);
         
         if(returnValue == EXIT_FAILURE) {
+            NSLog(@"Failed");
             NSLog(@"%s v%.2f (%ld)", argv[0], ATTIVersionNumber, (long)ATTIBuildNumber);
             NSLog(@"usage: %s <input_filepath> <text> <output_filepath>", argv[0]);
+            NSLog(@"Written by Michael May (c) 2013. Licence: MIT");
         }
     }
     
